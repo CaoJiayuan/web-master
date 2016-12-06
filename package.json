@@ -7,7 +7,7 @@
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
-    "jquery": "^3.1.0",
+    "jquery": "2.1.4",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
@@ -16,6 +16,8 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap-material-design": "^0.5.10",
     "vue-router": "^2.1.1"
   }
 }

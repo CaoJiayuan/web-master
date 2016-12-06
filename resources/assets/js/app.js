@@ -1,4 +1,5 @@
-
+import VueRouter from 'vue-router';
+import routes from './routes';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -6,15 +7,17 @@
  */
 
 require('./bootstrap');
-
+require('bootstrap-material-design');
+Vue.use(VueRouter);
+let router = new VueRouter({
+  routes
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the body of the page. From here, you may begin adding components to
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
 const app = new Vue({
-    el: '#app'
-});
+    router
+}).$mount('#app');
