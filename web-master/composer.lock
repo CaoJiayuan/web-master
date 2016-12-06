@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f897d9659ab2c364a94a943ba2dc82c",
-    "content-hash": "f6984f45ab9ecaefbec5e6a8dc0de895",
+    "hash": "138db259b6a907ffb78a31db05ceab73",
+    "content-hash": "a2697cd734f13b2489006e724ced18e3",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -121,6 +121,43 @@
                 }
             ],
             "time": "2016-06-13 19:28:20"
+        },
+        {
+            "name": "cao-jiayuan/evonne",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CaoJiayuan/evonne.git",
+                "reference": "58db658829a49af3b0c8a429a00e194bfe77a470"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/CaoJiayuan/evonne/58db658829a49af3b0c8a429a00e194bfe77a470.zip",
+                "reference": "58db658829a49af3b0c8a429a00e194bfe77a470",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Evonne\\": "src/Evonne/"
+                },
+                "files": [
+                    "src/Evonne/Foundation/predefine.php",
+                    "src/Evonne/Util/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cao Jiayuan",
+                    "email": "cjy632258@hotmail.com"
+                }
+            ],
+            "description": "Evonne php framework",
+            "time": "2016-12-01 14:51:14"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -3619,9 +3656,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "cao-jiayuan/evonne": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6.4"

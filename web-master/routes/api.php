@@ -16,3 +16,26 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/domains', function () {
+    $dir = config('app.vhost_path');
+
+    $files = [];
+
+    file_map($dir, function ($filename, $fileInfo) use (&$files) {
+        /** @var SplFileInfo $fileInfo */
+        $content = file_get_contents($filename);
+
+        preg_match('#server_name(.*);#', $content, $match);
+        preg_match('#listen(.*);#', $content, $match2);
+
+        $files[] = [
+            'filename' => basename($filename),
+            'name' => trim($match[1]),
+            'listen' => trim(array_get($match2, 1))
+        ];
+
+    });
+
+    return $files;
+});

@@ -124,6 +124,7 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'vhost_path' => '/usr/local/nginx/conf/vhost/',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

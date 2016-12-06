@@ -16,46 +16,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr class="info">
-            <td>3</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr class="success">
-            <td>4</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr class="danger">
-            <td>5</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr class="warning">
-            <td>6</td>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-          </tr>
-          <tr class="active">
-            <td>7</td>
-            <td>Column content</td>
-            <td>Column content</td>
+          <tr class="info" v-for="(domain,index) in domains">
+            <td>{{ index + 1 }}</td>
+            <td><a :href="'http://' + domain.name" target="_blank">{{ domain.name }}</a></td>
+            <td>{{ domain.listen }}</td>
             <td>Column content</td>
           </tr>
           </tbody>
@@ -110,12 +74,34 @@
 
     },
     data(){
-      return {}
+      return {
+        domains : [
+          {
+            name : 'hello.dev',
+            listen : 80
+          },
+          {
+            name : 'foo.dev',
+            listen : 80
+          },
+          {
+            name : 'bar.dev',
+            listen : 8088
+          },
+          {
+            name : 'echo.dev',
+            listen : 80
+          },
+        ]
+      }
     },
     components: {},
     methods   : {},
     mounted(){
-
+      let self = this;
+      this.$http.get('/api/domains').then(res => {
+        self.domains = res.data;
+      })
     },
     events    : {}
   }
