@@ -124,7 +124,9 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
-    'vhost_path' => '/usr/local/nginx/conf/vhost/',
+    'vhost_path' => 'E:/Web/Nginx/conf/vhost',
+    'nginx_path' => 'E:/Web/Nginx',
+    'etc_path' => 'C:/Windows/System32/drivers/etc',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -178,7 +180,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
     ],
 
     /*
@@ -226,6 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
 
     ],
 

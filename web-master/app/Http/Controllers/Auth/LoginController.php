@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Lang;
 
 class LoginController extends Controller
 {
@@ -35,5 +39,30 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * @param $request
+     * @param User|Authenticatable $user
+     * @return mixed
+     */
+    protected function authenticated($request, $user)
+    {
+        $user->token = \JWTAuth::fromUser($user);
+
+        return $user->toArray();
+    }
+    protected function sendLoginResponse(Request $request)
+    {
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+            ?: redirect()->intended($this->redirectPath());
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        return response()->json(['error' => Lang::get('auth.failed')], 403);
     }
 }
